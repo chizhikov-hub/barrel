@@ -1,6 +1,7 @@
 import { StyleSheet, TouchableOpacity, Modal, View } from 'react-native';
 import { ThemedText } from '@/components/ThemedText';
 import { useState } from 'react';
+import { useThemeColor } from '@/hooks/useThemeColor';
 
 interface TableProps {
     number: number;
@@ -10,6 +11,22 @@ interface TableProps {
 // Компонент для отображения стола
 export const Table = ({ number, onDelete }: TableProps) => {
     const [menuVisible, setMenuVisible] = useState(false);
+
+    // Get theme-aware colors
+    const menuBackgroundColor = useThemeColor({
+        light: 'white',
+        dark: '#2c2c2c'
+    }, 'background');
+
+    const menuBorderColor = useThemeColor({
+        light: '#f0f0f0',
+        dark: '#3d3d3d'
+    }, 'text');
+
+    const menuShadowColor = useThemeColor({
+        light: '#000',
+        dark: '#000'
+    }, 'text');
 
     const handleLongPress = () => {
         setMenuVisible(true);
@@ -42,12 +59,18 @@ export const Table = ({ number, onDelete }: TableProps) => {
                     activeOpacity={1}
                     onPress={() => setMenuVisible(false)}
                 >
-                    <View style={styles.contextMenu}>
+                    <View style={[
+                        styles.contextMenu,
+                        { backgroundColor: menuBackgroundColor, shadowColor: menuShadowColor }
+                    ]}>
                         <TouchableOpacity 
-                            style={styles.menuItem} 
+                            style={[
+                                styles.menuItem,
+                                { borderBottomColor: menuBorderColor }
+                            ]} 
                             onPress={handleDelete}
                         >
-                            <ThemedText type="default">Удалить</ThemedText>
+                            <ThemedText type="default">Удалить стол</ThemedText>
                         </TouchableOpacity>
                     </View>
                 </TouchableOpacity>
@@ -74,12 +97,10 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     contextMenu: {
-        backgroundColor: 'white',
         borderRadius: 8,
         padding: 8,
         width: '80%',
         maxWidth: 300,
-        shadowColor: '#000',
         shadowOffset: { width: 0, height: 2 },
         shadowOpacity: 0.25,
         shadowRadius: 3.84,
@@ -88,6 +109,5 @@ const styles = StyleSheet.create({
     menuItem: {
         padding: 12,
         borderBottomWidth: 1,
-        borderBottomColor: '#f0f0f0',
     },
 });
