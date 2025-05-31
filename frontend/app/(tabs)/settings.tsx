@@ -3,6 +3,7 @@ import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
 import { useState } from 'react';
 import { useThemeColor } from '@/hooks/useThemeColor';
+import { router } from 'expo-router';
 
 // Define a type for settings items
 type SettingItem = {
@@ -39,7 +40,7 @@ export default function SettingsScreen() {
         {
           id: 'product-categories',
           title: 'Категории товаров',
-          onPress: () => console.log('Navigate to Product Categories')
+          onPress: () => router.push('/categories')
         },
         {
           id: 'products',
@@ -54,13 +55,13 @@ export default function SettingsScreen() {
     <ThemedView style={styles.container}>
       <ScrollView>
         <ThemedText type="title" style={styles.screenTitle}>Настройки</ThemedText>
-        
+
         {categories.map((category) => (
           <ThemedView key={category.id} style={styles.categoryContainer}>
             <ThemedText type="subtitle" style={styles.categoryTitle}>
               {category.title}
             </ThemedText>
-            
+
             {category.items.map((item, index) => (
               <TouchableOpacity 
                 key={item.id} 
