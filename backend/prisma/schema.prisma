@@ -10,26 +10,45 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-// Define your models here
-model Product {
-  id       Int     @id @default(autoincrement())
+model ProductFolder {
+  id       Int             @id @default(autoincrement())
   name     String
-  favorite Boolean @default(false)
+  parentId Int? // Null для корневых папок
+  parent   ProductFolder?  @relation("FolderTree", fields: [parentId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  children ProductFolder[] @relation("FolderTree")
+  products Product[]
+  path     String // Полный путь папки для удобной навигации
+
+  @@map("ProductFolders")
+}
+
+model Product {
+  id            Int           @id @default(autoincrement())
+  name          String
+  favorite      Boolean       @default(false)
+  productType   ProductType   @relation(fields: [productTypeId], references: [id])
+  productTypeId Int
+  folder        ProductFolder @relation(fields: [folderId], references: [id])
+  folderId      Int
 
   @@map("Products")
 }
 
-model Category {
-  id   Int    @id @default(autoincrement())
-  name String
+model ProductType {
+  id       Int       @id @default(autoincrement())
+  name     String
+  unit     Unit      @relation(fields: [unitId], references: [id])
+  unitId   Int
+  products Product[]
 
-  @@map("Categories")
+  @@map("ProductTypes")
 }
 
 model Unit {
-  id   Int    @id @default(autoincrement())
-  code String @unique
-  name String
+  id           Int           @id @default(autoincrement())
+  code         String        @unique
+  name         String
+  productTypes ProductType[]
 
   @@map("Units")
 }
