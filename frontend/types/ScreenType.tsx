@@ -1,0 +1,1 @@
+export type ScreenType = 'Home' | 'Settings' | 'Catalogs';

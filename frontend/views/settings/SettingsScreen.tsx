@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { View, ScrollView, ViewStyle, TextStyle } from "react-native";
+import { FC, useState } from "react";
+import { View, ScrollView, ViewStyle, TextStyle, TouchableOpacity } from "react-native";
 import { makeStyles, Text, ListItem, Switch, useThemeMode, Theme } from "@rneui/themed";
 import { Ionicons } from '@expo/vector-icons';
 
@@ -9,7 +9,9 @@ interface StyleProps {
   scrollView: ViewStyle;
 }
 
-const SettingsScreen: React.FC = () => {
+const SettingsScreen: FC<{
+  setActiveScreen: React.Dispatch<React.SetStateAction<'Home' | 'Settings' | 'Catalogs'>>;
+}> = ({ setActiveScreen }) => {
   const styles = useStyles();
   const { setMode, mode } = useThemeMode();
   const [notifications, setNotifications] = useState<boolean>(true);
@@ -17,9 +19,9 @@ const SettingsScreen: React.FC = () => {
   return (
     <View style={styles.container}>
       <Text h4 style={styles.header}>Settings</Text>
-      
+
       <ScrollView style={styles.scrollView}>
-        <ListItem bottomDivider>
+        <ListItem bottomDivider key="mode">
           <Ionicons name="moon" size={24} color="#2089dc" />
           <ListItem.Content>
             <ListItem.Title>Dark Mode</ListItem.Title>
@@ -29,26 +31,14 @@ const SettingsScreen: React.FC = () => {
             onValueChange={() => setMode(mode === "dark" ? "light" : "dark")}
           />
         </ListItem>
-        
-        {/*<ListItem bottomDivider>*/}
-        {/*  <Ionicons name="notifications" size={24} color="#2089dc" />*/}
-        {/*  <ListItem.Content>*/}
-        {/*    <ListItem.Title>Notifications</ListItem.Title>*/}
-        {/*  </ListItem.Content>*/}
-        {/*  <Switch*/}
-        {/*    value={notifications}*/}
-        {/*    onValueChange={setNotifications}*/}
-        {/*  />*/}
-        {/*</ListItem>*/}
-        
-        {/*<ListItem bottomDivider>*/}
-        {/*  <Ionicons name="information-circle" size={24} color="#2089dc" />*/}
-        {/*  <ListItem.Content>*/}
-        {/*    <ListItem.Title>About</ListItem.Title>*/}
-        {/*    <ListItem.Subtitle>App version 1.0.0</ListItem.Subtitle>*/}
-        {/*  </ListItem.Content>*/}
-        {/*  <ListItem.Chevron />*/}
-        {/*</ListItem>*/}
+
+        <ListItem bottomDivider key="catalogs" onPress={() => setActiveScreen('Catalogs')}>
+          <Ionicons name="reader-outline" size={24} color="#2089dc" />
+          <ListItem.Content>
+            <ListItem.Title>Справочники</ListItem.Title>
+          </ListItem.Content>
+          <ListItem.Chevron />
+        </ListItem>
       </ScrollView>
     </View>
   );

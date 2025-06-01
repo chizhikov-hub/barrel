@@ -2,11 +2,12 @@ import React from 'react';
 import { View, TouchableOpacity, ViewStyle, TextStyle } from 'react-native';
 import { Text, makeStyles, useTheme, Theme } from '@rneui/themed';
 import { Ionicons } from '@expo/vector-icons';
+import {ScreenType} from "../types/ScreenType";
 
 interface BottomNavigationProps {
   navigation?: any; // Optional since it's not used in the component
-  activeScreen: 'Home' | 'Settings';
-  setActiveScreen: React.Dispatch<React.SetStateAction<'Home' | 'Settings'>>;
+  activeScreen: ScreenType;
+  setActiveScreen: React.Dispatch<React.SetStateAction<ScreenType>>;
 }
 
 interface StyleProps {
@@ -66,7 +67,7 @@ const BottomNavigation: React.FC<BottomNavigationProps> = ({
   );
 };
 
-const useStyles = makeStyles((theme: Theme) => ({
+const useStyles = makeStyles((theme) => ({
   container: {
     flexDirection: 'row',
     height: 60,

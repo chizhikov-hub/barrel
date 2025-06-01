@@ -1,9 +1,11 @@
-import React, { useState } from "react";
-import { View, StyleSheet, SafeAreaView, StatusBar, Platform, StatusBarStyle } from "react-native";
-import { createTheme, ThemeProvider, useTheme } from "@rneui/themed";
+import React, {useState} from "react";
+import {SafeAreaView, StatusBar, StatusBarStyle, StyleSheet, View} from "react-native";
+import {createTheme, ThemeProvider, useTheme} from "@rneui/themed";
 import HomeScreen from "./views/home/HomeScreen";
 import SettingsScreen from "./views/settings/SettingsScreen";
+import CatalogsScreen from "./views/catalogs/CatalogsScreen";
 import BottomNavigation from "./views/BottomNavigation";
+import {ScreenType} from "./types/ScreenType";
 
 const theme = createTheme({
   lightColors: {},
@@ -19,8 +21,6 @@ const StatusBarWithTheme: React.FC = () => {
   return <StatusBar barStyle={barStyle} backgroundColor={theme.colors.background} />;
 };
 
-type ScreenType = 'Home' | 'Settings';
-
 const App: React.FC = () => {
   const [activeScreen, setActiveScreen] = useState<ScreenType>('Home');
 
@@ -29,7 +29,9 @@ const App: React.FC = () => {
       case 'Home':
         return <HomeScreen />;
       case 'Settings':
-        return <SettingsScreen />;
+        return <SettingsScreen setActiveScreen={setActiveScreen} />;
+      case 'Catalogs':
+        return <CatalogsScreen setActiveScreen={setActiveScreen} />;
       default:
         return <HomeScreen />;
     }
