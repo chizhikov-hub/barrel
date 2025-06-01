@@ -30,38 +30,40 @@ const SettingsScreen: React.FC = () => {
           />
         </ListItem>
         
-        <ListItem bottomDivider>
-          <Ionicons name="notifications" size={24} color="#2089dc" />
-          <ListItem.Content>
-            <ListItem.Title>Notifications</ListItem.Title>
-          </ListItem.Content>
-          <Switch
-            value={notifications}
-            onValueChange={setNotifications}
-          />
-        </ListItem>
+        {/*<ListItem bottomDivider>*/}
+        {/*  <Ionicons name="notifications" size={24} color="#2089dc" />*/}
+        {/*  <ListItem.Content>*/}
+        {/*    <ListItem.Title>Notifications</ListItem.Title>*/}
+        {/*  </ListItem.Content>*/}
+        {/*  <Switch*/}
+        {/*    value={notifications}*/}
+        {/*    onValueChange={setNotifications}*/}
+        {/*  />*/}
+        {/*</ListItem>*/}
         
-        <ListItem bottomDivider>
-          <Ionicons name="information-circle" size={24} color="#2089dc" />
-          <ListItem.Content>
-            <ListItem.Title>About</ListItem.Title>
-            <ListItem.Subtitle>App version 1.0.0</ListItem.Subtitle>
-          </ListItem.Content>
-          <ListItem.Chevron />
-        </ListItem>
+        {/*<ListItem bottomDivider>*/}
+        {/*  <Ionicons name="information-circle" size={24} color="#2089dc" />*/}
+        {/*  <ListItem.Content>*/}
+        {/*    <ListItem.Title>About</ListItem.Title>*/}
+        {/*    <ListItem.Subtitle>App version 1.0.0</ListItem.Subtitle>*/}
+        {/*  </ListItem.Content>*/}
+        {/*  <ListItem.Chevron />*/}
+        {/*</ListItem>*/}
       </ScrollView>
     </View>
   );
 };
 
-const useStyles = makeStyles((theme: Theme) => ({
+const useStyles = makeStyles((theme) => ({
   container: {
     flex: 1,
     backgroundColor: theme.colors.background,
   },
   header: {
-    padding: 16,
-    paddingBottom: 8,
+    paddingTop: 40,
+    paddingBottom: 0,
+    paddingLeft: 16,
+    paddingRight: 16,
   },
   scrollView: {
     flex: 1,

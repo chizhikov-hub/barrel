@@ -1,8 +1,7 @@
 import React, { FC, useState } from "react";
 import { View, TouchableOpacity, ScrollView, useWindowDimensions, ViewStyle } from "react-native";
-import { makeStyles, Text, Button, useThemeMode, Theme } from "@rneui/themed";
+import { makeStyles, Text, Button, useThemeMode } from "@rneui/themed";
 import { Table } from './components/Table';
-import {Ionicons} from "@expo/vector-icons";
 
 interface StyleProps {
   container: ViewStyle;
@@ -71,7 +70,7 @@ const HomeScreen: FC = () => {
   );
 };
 
-const useStyles = makeStyles((theme: Theme) => ({
+const useStyles = makeStyles((theme) => ({
   container: {
     flex: 1,
     padding: 16,
