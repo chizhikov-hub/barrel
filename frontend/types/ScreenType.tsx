@@ -1,1 +1,1 @@
-export type ScreenType = 'Home' | 'Settings' | 'Catalogs';
+export type ScreenType = 'Home' | 'Settings' | 'Catalogs' | 'ProductTypes' | 'ProductTypeEdit';

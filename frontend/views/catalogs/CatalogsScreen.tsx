@@ -2,6 +2,7 @@ import { FC } from "react";
 import { View, ScrollView, ViewStyle, TextStyle } from "react-native";
 import { makeStyles, Text, ListItem } from "@rneui/themed";
 import { Ionicons } from '@expo/vector-icons';
+import {ScreenType} from "../../types/ScreenType";
 
 interface StyleProps {
   container: ViewStyle;
@@ -10,7 +11,7 @@ interface StyleProps {
 }
 
 const CatalogsScreen: FC<{
-  setActiveScreen: React.Dispatch<React.SetStateAction<'Home' | 'Settings' | 'Catalogs'>>;
+  setActiveScreen: React.Dispatch<React.SetStateAction<ScreenType>>;
 }> = ({ setActiveScreen }) => {
   const styles = useStyles();
 
@@ -36,7 +37,7 @@ const CatalogsScreen: FC<{
           <ListItem.Chevron />
         </ListItem>
 
-        <ListItem bottomDivider key="productTypes">
+        <ListItem bottomDivider key="productTypes" onPress={() => setActiveScreen('ProductTypes')}>
           <Ionicons name="list-outline" size={24} color="#2089dc" />
           <ListItem.Content>
             <ListItem.Title>Типы товаров</ListItem.Title>

@@ -2,6 +2,7 @@ import { FC, useState } from "react";
 import { View, ScrollView, ViewStyle, TextStyle, TouchableOpacity } from "react-native";
 import { makeStyles, Text, ListItem, Switch, useThemeMode, Theme } from "@rneui/themed";
 import { Ionicons } from '@expo/vector-icons';
+import {ScreenType} from "../../types/ScreenType";
 
 interface StyleProps {
   container: ViewStyle;
@@ -10,7 +11,7 @@ interface StyleProps {
 }
 
 const SettingsScreen: FC<{
-  setActiveScreen: React.Dispatch<React.SetStateAction<'Home' | 'Settings' | 'Catalogs'>>;
+  setActiveScreen: React.Dispatch<React.SetStateAction<ScreenType>>;
 }> = ({ setActiveScreen }) => {
   const styles = useStyles();
   const { setMode, mode } = useThemeMode();
