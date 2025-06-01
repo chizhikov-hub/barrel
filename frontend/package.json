@@ -21,21 +21,19 @@
   "dependencies": {
     "@rneui/base": "github:react-native-elements/react-native-elements#base",
     "@rneui/themed": "github:react-native-elements/react-native-elements#themed",
-    "expo": "^47.0.12",
-    "expo-status-bar": "~1.4.2",
-    "react": "18.1.0",
-    "react-dom": "18.1.0",
-    "react-native": "0.70.8",
-    "react-native-web": "~0.18.9"
+    "expo": "~53.0.9",
+    "expo-status-bar": "~2.2.3",
+    "react": "19.0.0",
+    "react-dom": "19.0.0",
+    "react-native": "0.79.2",
+    "react-native-web": "~0.20.0",
+    "@expo/metro-runtime": "~5.0.4"
   },
   "devDependencies": {
-    "@babel/core": "^7.12.9",
-    "@types/react": "~18.0.24",
-    "@types/react-native": "~0.70.6",
-    "typescript": "^4.6.3"
-  },
-  "overrides": {
-    "punycode": "2.3.1"
+    "@babel/core": "^7.27.4",
+    "@types/react": "~19.1.6",
+    "@types/react-native": "~0.73.0",
+    "typescript": "^4.9.5"
   },
   "private": true
 }

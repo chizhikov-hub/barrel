@@ -54,7 +54,7 @@ const HomeScreen: FC = () => {
                 ]}
                 onPress={handleAddTable}
             >
-              <Ionicons name="add-circle" size={48} />
+              <Text style={{ fontSize: 24, fontWeight: 'bold' }}>+</Text>
             </TouchableOpacity>
           </View>
         </ScrollView>
@@ -97,11 +97,14 @@ const useStyles = makeStyles((theme: Theme) => ({
     borderRadius: 8,
   },
   addButton: {
-    width: 54,
-    height: 54,
-    borderRadius: 27,
+    width: 56,
+    height: 56,
+    backgroundColor: 'rgba(161, 206, 220, 0.3)',
+    borderRadius: 8,
     justifyContent: 'center',
     alignItems: 'center',
+    borderWidth: 1,
+    borderColor: '#A1CEDC',
   },
   tablesGrid: {
     flexDirection: 'row',
